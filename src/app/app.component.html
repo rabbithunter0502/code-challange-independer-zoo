@@ -1,0 +1,81 @@
+<h1>Independer zoo</h1>
+{{ animalFormGroup.value | json }}
+<form [formGroup]="animalFormGroup">
+  <h4>Sort by:</h4>
+  <select formControlName="sortBy">
+    <option value="">- select your choice -</option>
+    <option value="age">Age</option>
+    <option value="name">Name (ascending)</option>
+  </select>
+
+  <hr />
+
+  <h4>Filter animal type:</h4>
+  <div>
+    <input
+      type="radio"
+      name="animalType"
+      id="showAll"
+      value="showAll"
+      formControlName="animalType"
+    />
+    <label for="showAll">Show all</label>
+  </div>
+  <div>
+    <input
+      type="radio"
+      name="animalType"
+      id="dog"
+      formControlName="animalType"
+      value="0"
+    />
+    <label for="dog">Dog</label>
+  </div>
+  <div>
+    <input
+      type="radio"
+      name="animalType"
+      id="cat"
+      formControlName="animalType"
+      value="1"
+    />
+    <label for="cat">Cat</label>
+  </div>
+  <div>
+    <input
+      type="radio"
+      name="animalType"
+      id="lion"
+      formControlName="animalType"
+      value="3"
+    />
+    <label for="lion">Lion</label>
+  </div>
+  <div>
+    <input
+      type="radio"
+      name="animalType"
+      id="bird"
+      formControlName="animalType"
+      value="3"
+    />
+    <label for="bird">Bird</label>
+  </div>
+</form>
+<hr />
+
+<h4>Group by animal type:</h4>
+<div>
+  When this button is clicked, then it will show for example all the dogs first,
+  and then all the cats, and so on.
+</div>
+<button type="button" (click)="groupByAnimalType()">
+  Group by animal type
+</button>
+
+<hr />
+
+<animal-block
+  *ngFor="let animal of displayAnimal"
+  [animal]="animal"
+></animal-block>
